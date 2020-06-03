@@ -1,5 +1,5 @@
-from app.services.service_types import ServiceTypes
-from app.services.services import Service
+from app.app.services.service_types import ServiceTypes
+from app.app.services.services import Service
 
 class EmailService(Service):
     service_type = ServiceTypes.EMAIL
