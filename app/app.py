@@ -1,4 +1,5 @@
 # app.py - a minimal flask api using flask_restful
+import rq
 from flask import Flask, request
 from flask_restful import Resource, Api
 from flask_api import status
@@ -9,6 +10,7 @@ from redis import Redis
 app = Flask(__name__)
 api = Api(app)
 redis = Redis(host='redis', port=6379)
+q = rq.Queue(connection=redis)
 
 @app.route('/',  methods=['POST'])
 def post():
