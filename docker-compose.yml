@@ -4,3 +4,8 @@ services:
     build: ./app
     ports: ['5000:5000']
     volumes: ['./app:/app']
+    depends_on:
+      - redis
+
+  redis:
+    image: redis

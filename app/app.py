@@ -4,9 +4,11 @@ from flask_restful import Resource, Api
 from flask_api import status
 
 from app.worker import task_handler
+from redis import Redis
 
 app = Flask(__name__)
 api = Api(app)
+redis = Redis(host='redis', port=6379)
 
 @app.route('/',  methods=['POST'])
 def post():
