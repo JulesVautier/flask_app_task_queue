@@ -4,9 +4,39 @@ services:
     build: ./app
     ports: ['5000:5000']
     volumes: ['./app:/app']
+    links:
+      - redis
     depends_on:
       - redis
 
+  workers:
+      image: workers
+      build:
+          context: .
+          dockerfile: workers/Dockerfile
+      volumes:
+          - ./workers:/usr/src/workers
+      links:
+          - redis
+      depends_on:
+          - redis
+
   redis:
     image: redis
-    ports: ['6379:6379']
+    expose:
+      - 6379
+    command: ["sh", "-c", "redis-server --appendonly yes"]
+
+  rq-dashboard:
+      image: rq-dashboard
+      build:
+          context: .
+          dockerfile: rq-dashboard/Dockerfile
+      ports:
+          - '9181:9181'
+      expose:
+          - "9181"
+      links:
+          - redis
+      depends_on:
+          - redis

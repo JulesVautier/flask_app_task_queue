@@ -14,7 +14,10 @@ q = rq.Queue(connection=redis)
 
 @app.route('/',  methods=['POST'])
 def post():
-    task_handler()
+    job = q.enqueue(task_handler, None)
+    app.logger.info(job.get_status())
+    app.logger.info(job.started_at)
+    app.logger.info(q.count)
     return request.get_json()['text'], status.HTTP_200_OK
 
 if __name__ == '__main__':
