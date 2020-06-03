@@ -2,10 +2,10 @@ FROM python:3.7
 
 EXPOSE 5000
 
-WORKDIR app
+WORKDIR api
 
-COPY * /app/
+COPY * /api/
 
 RUN pip install -r requirements.txt
 
-CMD python app.py
+CMD python run.py

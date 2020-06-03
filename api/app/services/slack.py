@@ -1,5 +1,5 @@
-from app.app.services.service_types import ServiceTypes
-from app.app.services.services import Service
+from api.app.services.service_types import ServiceTypes
+from api.app.services.services import Service
 
 class SlackService(Service):
     service_type = ServiceTypes.SLACK

@@ -1,9 +1,10 @@
 version: "3"
 services:
   flask:
-    build: ./app
+    build: api
     ports: ['5000:5000']
-    volumes: ['./app:/app']
+    volumes:
+      - ./api:/api
     links:
       - redis
     depends_on:
@@ -16,6 +17,7 @@ services:
           dockerfile: workers/Dockerfile
       volumes:
           - ./workers:/usr/src/workers
+          - ./api:/api
       links:
           - redis
       depends_on:
