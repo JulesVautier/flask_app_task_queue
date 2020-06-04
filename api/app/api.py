@@ -9,6 +9,7 @@ from redis import Redis
 from app.worker import task_handler
 
 app_flask = Flask(__name__)
+app_flask.config['MAIL_USERNAME'] = 'julesvautier@gmail.com'
 redis = Redis(host='redis', port=6379)
 q = rq.Queue(connection=redis)
 
