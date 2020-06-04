@@ -1,5 +1,9 @@
+#flask
 flask
 flask_restful
+flask_mail
 flask_api
+
+#queue
 redis
 rq
