@@ -1,5 +1,5 @@
 from app.services.services import Service
-
+from app.services import *
 
 def task_handler(args):
     service_type = args['service_type']
