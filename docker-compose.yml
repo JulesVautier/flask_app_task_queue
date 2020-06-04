@@ -6,7 +6,6 @@ services:
     volumes:
       - ./api:/api
     env_file:
-      - .env
       - ./api/.env
     links:
       - redis
@@ -22,7 +21,6 @@ services:
           - ./workers:/usr/src/workers
           - ./api:/api
       env_file:
-          - .env
           - ./api/.env
       links:
           - redis
