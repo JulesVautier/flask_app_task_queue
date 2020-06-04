@@ -5,7 +5,6 @@ from flask_api import status
 
 from redis import Redis
 
-
 from app.worker import task_handler
 
 app_flask = Flask(__name__)
@@ -15,5 +14,6 @@ q = rq.Queue(connection=redis)
 
 @app_flask.route('/', methods=['POST'])
 def post():
+    WebClient()
     job = q.enqueue(task_handler, None)
     return request.get_json()['text'], status.HTTP_200_OK
