@@ -1,9 +1,4 @@
-import sys
-
-from app.services.email_service import EmailService
-from app.services.service_types import ServiceTypes
 from app.services.services import Service
-from app.services.slack_service import SlackService
 
 
 def task_handler(args):
