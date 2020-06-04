@@ -11,7 +11,7 @@ from app.services.service_types import ServiceTypes
 from app.worker import task_handler
 
 app_flask = Flask(__name__)
-app_flask.config['MAIL_USERNAME'] = os.environ['MAIL_USERNAME']
+app_flask.config['MAIL_USERNAME'] = os.environ['SENDER_MAIL_USERNAME']
 redis = Redis(host='redis', port=6379)
 q = rq.Queue(connection=redis)
 
