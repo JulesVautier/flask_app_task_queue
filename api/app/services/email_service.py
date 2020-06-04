@@ -22,7 +22,7 @@ mail = Mail(app_flask)
 class EmailService(Service):
     service_type = ServiceTypes.EMAIL
 
-    def send_data(self, data):
+    def send_data(self, message):
         with app_flask.app_context():
             msg = Message(subject="Hello",
                           sender=app_flask.config.get("MAIL_USERNAME"),

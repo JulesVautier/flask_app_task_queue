@@ -1,8 +1,8 @@
-from api.app.services.service_types import ServiceTypes
-from api.app.services.services import Service
+from app.services.service_types import ServiceTypes
+from app.services.services import Service
 
 class LogService(Service):
     service_type = ServiceTypes.LOG
 
-    def send_data(self, data):
-        print('send log', data)
+    def send_data(self, message):
+        print('Log', message)

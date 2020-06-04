@@ -9,7 +9,7 @@ client = WebClient(token=os.environ['SLACK_API_TOKEN'])
 class SlackService(Service):
     service_type = ServiceTypes.SLACK
 
-    def send_data(self, data):
+    def send_data(self, message):
         response = client.chat_postMessage(
             channel='#notifs-plateforme',
-            text=data)
+            text=message)
