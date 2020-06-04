@@ -14,6 +14,5 @@ q = rq.Queue(connection=redis)
 
 @app_flask.route('/', methods=['POST'])
 def post():
-    WebClient()
-    job = q.enqueue(task_handler, None)
+    job = q.enqueue(task_handler, request.get_json()['text'])
     return request.get_json()['text'], status.HTTP_200_OK
