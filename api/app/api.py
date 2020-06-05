@@ -1,13 +1,11 @@
 import os
-import sys
 
 import rq
+from fakeredis import FakeStrictRedis
 from flask import Flask
 from flask import request
 from flask_api import status
-
 from redis import Redis
-from fakeredis import FakeStrictRedis
 
 from app.services.service_types import ServiceTypes
 from app.worker import task_handler
@@ -27,7 +25,7 @@ ENABLED_SERIVCES = [
 def post():
     if app_flask.config['TESTING']:
         ENABLED_SERIVCES = [ServiceTypes.LOG]
-        q = rq.Queue(is_async=False, connection=FakeStrictRedis())
+        q = rq.Queue(name='test', is_async=False, connection=FakeStrictRedis())
     for service_type in ENABLED_SERIVCES:
         job = q.enqueue(task_handler, {'service_type': service_type, 'message': request.get_json()['message']})
     return request.get_json()['message'], status.HTTP_200_OK

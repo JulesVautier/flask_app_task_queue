@@ -40,7 +40,9 @@ curl localhost:5000 --header "Content-Type: application/json" \
 ### How to improve ?
 
 1. Use a schema to verify the post request's data
-2. Handle failing jobs
+2. Write some RQ tests. Check if the jobs are created correctly.
+3. Create a connection manager to get a real or a test connection with Redis by checking the TESTING flag
+4. Handling failed jobs
 
 
 ### Monitoring the Redis Queue
