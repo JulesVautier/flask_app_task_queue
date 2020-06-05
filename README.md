@@ -36,6 +36,8 @@ curl localhost:5000 --header "Content-Type: application/json" \
   --data '{"message":"HelloWorld"}'
 
 ```
+### Tests
+```docker-compose run --rm flask pytest app/tests/tests.py```
 
 ### How to improve ?
 
