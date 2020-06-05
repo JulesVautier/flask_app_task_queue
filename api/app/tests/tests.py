@@ -5,11 +5,11 @@ import json
 from app.api import app_flask
 
 
-class CitiesTestCase(unittest.TestCase):
+class SimpleTest(unittest.TestCase):
 
-  def test_index(self):
+  def test_post_message(self):
     tester = app_flask.test_client(self)
-    response = tester.post('/', data={'message': 'Hello it\'s a test'})
+    response = tester.post('/', data=json.dumps({'message': 'Hello it\'s a test'}), content_type='application/json')
     self.assertEqual(response.status_code, 200)
     self.assertEqual(response.data, 'Hello it\'s a test')
 

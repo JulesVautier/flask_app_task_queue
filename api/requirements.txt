@@ -11,5 +11,6 @@ rq
 slackclient
 flask_mail
 
-#test
+#tests
 pytest
+fakeredis
